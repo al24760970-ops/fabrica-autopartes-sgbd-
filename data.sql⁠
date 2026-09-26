@@ -1,0 +1,24 @@
+USE fabrica_autopartes;
+
+INSERT INTO naves (nombre_nave, descripcion) VALUES 
+('Nave 1', 'Mecanizado CNC y Moldeo Rotacional (Rotoline)'),
+('Nave 2', 'Transformación de Polímeros: Mezclado, Extrusión 1, Extrusión 2, Inyección y Compresión');
+
+INSERT INTO areas (nombre_area, id_nave) VALUES 
+('CNC', 1),
+('Rotoline', 1),
+('Mezclado', 2),
+('Extrusión 1 (Preforma Bamburi)', 2),
+('Extrusión 2 (Pellet / Polvo)', 2),
+('Inyección', 2),
+('Compresión', 2);
+
+INSERT INTO productos_procesos (codigo_producto, nombre_producto, tipo, id_area_origen) VALUES
+('HERR-001', 'Moldes y Herramental CNC', 'Producto Final', 1),
+('ROTO-001', 'Tanques y Depósitos de Reserva', 'Producto Final', 2),
+('PREF-001', 'Preforma Inicial de Mezclado', 'Preforma Intermedia', 3),
+('PREF-002', 'Preforma Bamburi', 'Preforma Intermedia', 4),
+('MATP-001', 'Pellet / Polvo Plástico (para Inyección y Rotoline)', 'Materia Prima', 5),
+('INY-001',  'Componentes y Carcasas Plásticas', 'Producto Final', 6),
+('COMP-001', 'Filtros para Carro', 'Producto Final', 7),
+('COMP-002', 'Tapetes Automotrices', 'Producto Final', 7);
