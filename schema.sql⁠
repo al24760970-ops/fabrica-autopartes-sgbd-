@@ -1,0 +1,29 @@
+CREATE DATABASE IF NOT EXISTS fabrica_autopartes;
+USE fabrica_autopartes;
+
+CREATE TABLE naves (
+    id_nave INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_nave VARCHAR(50) NOT NULL UNIQUE,
+    descripcion TEXT
+);
+
+CREATE TABLE areas (
+    id_area INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_area VARCHAR(80) NOT NULL UNIQUE,
+    id_nave INT NOT NULL,
+    CONSTRAINT fk_area_nave 
+        FOREIGN KEY (id_nave) 
+        REFERENCES naves(id_nave) 
+        ON DELETE RESTRICT
+);
+
+CREATE TABLE productos_procesos (
+    id_producto INT PRIMARY KEY AUTO_INCREMENT,
+    codigo_producto VARCHAR(20) NOT NULL UNIQUE,
+    nombre_producto VARCHAR(100) NOT NULL,
+    tipo VARCHAR(30) NOT NULL CHECK (tipo IN ('Materia Prima', 'Preforma Intermedia', 'Producto Final')),
+    id_area_origen INT NOT NULL,
+    CONSTRAINT fk_producto_area 
+        FOREIGN KEY (id_area_origen) 
+        REFERENCES areas(id_area)
+);
